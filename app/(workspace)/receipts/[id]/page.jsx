@@ -13,7 +13,9 @@ export default async function ReceiptDetailPage({ params, searchParams }) {
 
   const { data: receipt } = await supabase
     .from("receipts")
-    .select("*, warehouses(name), receipt_items(*, products(name, sku, unit)), profiles:created_by(full_name)")
+    .select(
+      "*, warehouses(name), receipt_items(*, products(name, sku, unit)), profiles:created_by(full_name, email)"
+    )
     .eq("id", params.id)
     .single();
 
@@ -60,6 +62,12 @@ export default async function ReceiptDetailPage({ params, searchParams }) {
             >
               Edit Draft
             </Link>
+            <a
+              href={`/api/receipts/${receipt.id}/export`}
+              className="rounded-2xl border border-white/15 px-4 py-2 text-sm text-slate-200 hover:text-white"
+            >
+              Export CSV
+            </a>
             {canValidate && <ReceiptValidateButton receiptId={receipt.id} />}
           </div>
         }
