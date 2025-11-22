@@ -44,8 +44,13 @@ export default async function AdjustmentDetailPage({ params }) {
         title={`Adjustment for ${adjustment.products?.name || "Product"}`}
         description={`Warehouse ${adjustment.warehouses?.name || "—"}`}
         actions={
-          <div className="rounded-2xl border border-white/10 px-4 py-2 text-sm text-slate-200">
-            By {profile.full_name}
+          <div className="flex items-center gap-2">
+            <Link href="/adjustments" className="rounded-2xl border border-white/10 px-4 py-2 text-sm text-slate-200">
+              Back to adjustments
+            </Link>
+            <div className="rounded-2xl border border-white/10 px-4 py-2 text-sm text-slate-200">
+              By {profile.full_name}
+            </div>
           </div>
         }
       />
