@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import PasswordChecklist from "@/components/auth/PasswordChecklist";
@@ -22,6 +22,10 @@ export default function SignUpForm() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
+
+  useEffect(() => {
+    router.prefetch("/auth/login");
+  }, [router]);
 
   function handleChange(event) {
     const { name, value } = event.target;
@@ -55,11 +59,9 @@ export default function SignUpForm() {
         throw new Error(payload.error || "Unable to create account.");
       }
 
-      setSuccess(
-        "Account created. Enter the OTP sent to your inbox to activate access."
-      );
+      setSuccess("Account created. Redirecting to login...");
       setForm(initialState);
-      router.prefetch("/auth/verify-otp");
+      router.push("/auth/login");
     } catch (err) {
       setError(err.message);
     } finally {
