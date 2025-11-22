@@ -80,7 +80,9 @@ create table if not exists public.receipts (
   created_by uuid not null references public.profiles (id),
   created_at timestamptz not null default now(),
   validated_at timestamptz,
-  notes text
+  notes text,
+  responsible_id uuid references public.profiles (id),
+  scheduled_for timestamptz
 );
 
 create table if not exists public.receipt_items (
