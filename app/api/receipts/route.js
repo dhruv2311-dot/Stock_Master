@@ -44,6 +44,8 @@ export async function POST(req) {
         warehouse_id: payload.warehouse_id,
         created_by: profile.id,
         notes: payload.notes,
+        responsible_id: payload.responsible_id || null,
+        scheduled_for: payload.scheduled_for || null,
       })
       .select()
       .single();
