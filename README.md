@@ -139,6 +139,13 @@ Vitest (configured via `vitest.config.js`) supports `@` aliases and powers unit 
 
 ---
 
+## 📘 API Docs & Demo
+
+- Postman Published Documentation: https://documenter.getpostman.com/view/39189509/2sBXigMtds
+- Demo Video: https://youtu.be/jW3N5y22LoI?si=loHINSVVbZP197BR
+
+---
+
 ## 🛣️ Roadmap Ideas
 
 - Expand Vitest coverage across remaining API routes and UI hooks.
